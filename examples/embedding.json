@@ -1,0 +1,8 @@
+{
+  "input": {
+    "task": "embeddings",
+    "text": [
+      "WoiceAI documentation smoke test."
+    ]
+  }
+}

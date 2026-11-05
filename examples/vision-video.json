@@ -1,0 +1,9 @@
+{
+  "input": {
+    "s3_key": "knowledge-bases/REPLACE-test.mp4",
+    "kbId": "123",
+    "content_type": "video",
+    "title": "Test video",
+    "delay": 10
+  }
+}
