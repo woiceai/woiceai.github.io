@@ -1,0 +1,9 @@
+{
+  "input": {
+    "s3_key": "knowledge-bases/REPLACE-test.wav",
+    "kbId": "123",
+    "content_type": "audio",
+    "title": "Test audio",
+    "diarization": false
+  }
+}

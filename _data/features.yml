@@ -1,0 +1,38 @@
+- title: Dashboard
+  image: dashboard.png
+  alt: WoiceAI dashboard with knowledge bases, agents and quick actions
+  overview: Find your knowledge bases and agents in one place. Use quick actions to create a knowledge base or open the agent builder.
+  guide: docs/getting-started/README.md
+- title: Knowledge bases
+  image: knowledge-base.png
+  alt: WoiceAI knowledge base interface
+  overview: Add documents, text, websites and media to a knowledge base. Track indexing progress and inspect the content your assistants can retrieve.
+  guide: docs/ingestion/README.md
+- title: Media transcription and analysis
+  image: video-transcript.png
+  alt: WoiceAI video transcript and visual analysis
+  overview: Turn speech, images and video scenes into searchable content. Review transcripts and visual descriptions alongside the original source.
+  guide: docs/features/README.md
+  anchor: audio-and-visual-knowledge
+- title: Chat assistants
+  image: chat-module.png
+  alt: WoiceAI chat interface with a conversation and source references
+  overview: Ask questions about indexed content, follow source references and continue the conversation with follow-up questions.
+  guide: docs/chat/README.md
+- title: Assistant settings
+  layout: portrait
+  image: chat-settings.png
+  alt: WoiceAI chat assistant configuration panel
+  overview: Set instructions, tune retrieval and generation, and choose whether the assistant includes references in its answers.
+  guide: docs/features/README.md
+  anchor: chat-assistants
+- title: Agent builder
+  image: agent-builder.png
+  alt: WoiceAI visual agent workflow on a canvas
+  overview: Connect messages, questions, branches and Chat AI nodes on a visual canvas. Test how an agent follows the workflow and responds to users.
+  guide: docs/automations/README.md
+- title: Model connectors
+  image: connectors.png
+  alt: WoiceAI connectors interface showing built-in and optional model providers
+  overview: Use the built-in WoiceAI model or configure an optional provider through Connectors. The chat guide explains each provider’s backend requirements.
+  guide: docs/chat/README.md

@@ -1,0 +1,8 @@
+{
+  "input": {
+    "s3_key": "knowledge-bases/REPLACE-test.png",
+    "kbId": "123",
+    "content_type": "image",
+    "title": "Test image"
+  }
+}

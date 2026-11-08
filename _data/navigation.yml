@@ -1,0 +1,58 @@
+- title: Getting started
+  icon: book
+  pages:
+    - title: Introduction
+      path: docs/getting-started/README.md
+    - title: Architecture
+      path: docs/architecture/README.md
+- title: Set up the project
+  icon: setup
+  pages:
+    - title: Installation order
+      path: docs/setup/README.md
+    - title: Web application
+      path: docs/web/README.md
+    - title: AWS
+      path: docs/aws/README.md
+    - title: RunPod
+      path: docs/runpod/README.md
+    - title: Databases and vector search
+      path: docs/data/README.md
+    - title: MySQL schema
+      path: docs/data/schema.md
+    - title: Configuration and secrets
+      path: docs/configuration/README.md
+    - title: Environment templates
+      path: templates/README.md
+- title: Features
+  icon: grid
+  pages:
+    - title: Feature overview
+      path: docs/features/README.md
+    - title: Knowledge base ingestion
+      path: docs/ingestion/README.md
+    - title: Chat, models and connectors
+      path: docs/chat/README.md
+    - title: Workflow automations
+      path: docs/automations/README.md
+- title: API reference
+  icon: code
+  pages:
+    - title: Endpoints and contracts
+      path: docs/api/README.md
+    - title: Example payloads
+      path: examples/README.md
+- title: Operations
+  icon: activity
+  pages:
+    - title: Troubleshooting and testing
+      path: docs/operations/README.md
+    - title: Recovery questions
+      path: docs/gaps/README.md
+- title: Source reference
+  icon: folder
+  pages:
+    - title: Code map
+      path: docs/code-map/README.md
+    - title: Reviewed repositories
+      path: docs/sources/README.md

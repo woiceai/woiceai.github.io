@@ -1,0 +1,40 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "Sns": {
+        "Message": "Knowledgebase content added",
+        "MessageAttributes": {
+          "KNOWLEDGEBASE.ID": {
+            "Type": "String",
+            "Value": "123"
+          },
+          "KNOWLEDGEBASE.CONTENT": {
+            "Type": "String",
+            "Value": "documentation-test-text"
+          },
+          "KNOWLEDGEBASE.CONTENT_TYPE": {
+            "Type": "String",
+            "Value": "text"
+          },
+          "KNOWLEDGEBASE.ACTION": {
+            "Type": "String",
+            "Value": "ADD_FILE"
+          },
+          "KNOWLEDGEBASE.TEXT": {
+            "Type": "String",
+            "Value": "WoiceAI stores knowledge as embedded chunks."
+          },
+          "KNOWLEDGEBASE.TITLE": {
+            "Type": "String",
+            "Value": "Smoke test"
+          },
+          "KNOWLEDGEBASE.UNIQUE_ID": {
+            "Type": "String",
+            "Value": "456"
+          }
+        }
+      }
+    }
+  ]
+}

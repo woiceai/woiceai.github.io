@@ -1,0 +1,17 @@
+{
+  "input": {
+    "kbId": 123,
+    "user_query": "Summarize the test handbook.",
+    "history": [],
+    "enable_reference": true,
+    "external_knowledge_access": false,
+    "chat_arg": {
+      "temperature": 0.2,
+      "max_tokens": 512
+    },
+    "kb_arg": {
+      "retrieval_limit": 5,
+      "retrieval_score": 0.5
+    }
+  }
+}

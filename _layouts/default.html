@@ -1,0 +1,126 @@
+{% assign start = site.pages | where: 'path', 'docs/getting-started/README.md' | first %}
+{% assign last_path = 'index.md' %}
+{% assign last_title = 'Platform overview' %}
+{% assign current_group = nil %}
+{% assign found_current = false %}
+{% if page.path == 'index.md' %}
+  {% assign found_current = true %}
+{% endif %}
+{% for group in site.data.navigation %}
+  {% for item in group.pages %}
+    {% if found_current and next_path == nil %}
+      {% assign next_path = item.path %}
+      {% assign next_title = item.title %}
+    {% endif %}
+    {% if page.path == item.path %}
+      {% assign found_current = true %}
+      {% assign current_group = group.title %}
+      {% assign previous_path = last_path %}
+      {% assign previous_title = last_title %}
+    {% endif %}
+    {% assign last_path = item.path %}
+    {% assign last_title = item.title %}
+  {% endfor %}
+{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title | escape }} · WoiceAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/docs.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <a class="wordmark" href="{{ '/' | relative_url }}"><img src="{{ '/assets/images/woice.ai.png' | relative_url }}" alt="WoiceAI home"></a>
+      <details class="mobile-menu" open>
+        <summary>Navigation</summary>
+        <nav class="sidebar-nav" aria-label="Documentation">
+          <a class="nav-row{% if page.path == 'index.md' %} active{% endif %}" href="{{ '/' | relative_url }}"{% if page.path == 'index.md' %} aria-current="page"{% endif %}>
+            {% include nav-icon.html name='home' %} Platform overview
+          </a>
+          {% for group in site.data.navigation %}
+          <details class="nav-group"{% if current_group == group.title %} open{% endif %}>
+            <summary class="nav-row">{% include nav-icon.html name=group.icon %} {{ group.title | escape }} <span class="chevron" aria-hidden="true"></span></summary>
+            <ul>
+              {% for item in group.pages %}
+                {% assign target = site.pages | where: 'path', item.path | first %}
+                <li><a href="{{ target.url | relative_url }}"{% if page.path == item.path %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
+              {% endfor %}
+            </ul>
+          </details>
+          {% endfor %}
+        </nav>
+      </details>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <div class="breadcrumbs">
+          {% if current_group %}
+            <a href="{{ start.url | relative_url }}">Docs</a><span aria-hidden="true">/</span><span>{{ current_group | escape }}</span>
+          {% else %}
+            <span>Platform overview</span>
+          {% endif %}
+        </div>
+        <div class="header-links">
+          <a href="{{ start.url | relative_url }}">Docs</a>
+          <a class="github-link" href="https://github.com/asdkazmi/woiceai">
+            <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38l-.01-1.49c-2.23.49-2.7-.95-2.7-.95-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.22.82 1.22.82.72 1.22 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.21c0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8Z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </header>
+      <main id="content" class="page-content{% if page.path != 'index.md' %} prose{% endif %}">
+        {{ content }}
+        {% if previous_path or next_path %}
+        <nav class="page-turn" aria-label="Previous and next pages">
+          {% if previous_path %}
+            {% assign previous_page = site.pages | where: 'path', previous_path | first %}
+            <a class="previous-page" rel="prev" href="{{ previous_page.url | relative_url }}"><span>← Previous</span>{{ previous_title | escape }}</a>
+          {% endif %}
+          {% if next_path %}
+            {% assign next_page = site.pages | where: 'path', next_path | first %}
+            <a class="next-page" rel="next" href="{{ next_page.url | relative_url }}"><span>Next →</span>{{ next_title | escape }}</a>
+          {% endif %}
+        </nav>
+        {% endif %}
+      </main>
+      <footer class="site-footer">
+        <span>This documentation was generated with the help of AI.</span>
+        <a href="mailto:asdkazmi@rev9solutions.com">asdkazmi@rev9solutions.com</a>
+      </footer>
+    </div>
+  </div>
+  <script>
+    const mobileViewport = window.matchMedia('(max-width: 760px)');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu.open = !mobileViewport.matches;
+    mobileViewport.addEventListener('change', event => {
+      mobileMenu.open = !event.matches;
+    });
+  </script>
+  <script type="module">
+    const diagrams = document.querySelectorAll('code.language-mermaid');
+    if (diagrams.length) {
+      const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: 'neutral' });
+      const nodes = Array.from(diagrams, code => {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = code.textContent;
+        (code.closest('.highlighter-rouge') || code.parentElement).replaceWith(container);
+        return container;
+      });
+      await mermaid.run({ nodes });
+    }
+  </script>
+</body>
+</html>
