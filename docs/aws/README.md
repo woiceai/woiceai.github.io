@@ -7,10 +7,10 @@ title: "AWS: Lambda, ECR, S3 and SNS"
 
 ## Deployment units
 
-| Unit | Branch / build context | Container command | Trigger |
+| Unit | Build context | Container command | Trigger |
 | --- | --- | --- | --- |
 | KB router/indexer | `dev-woiceai-kb` / `indexer/` | `handler.lambda_handler` | SNS input topic |
-| Website scraper | `dev-scrapper` / `scraper/` | `handler.scrapper` | Synchronous invoke from KB Lambda |
+| Website scraper | `scraper/` | `handler.scrapper` | Synchronous invoke from KB Lambda |
 | Optional provider chat | External compatibility Lambda | `handler.lambda_handler` | Direct API invoke, including key validation |
 
 Set `SCRAPPER_LAMBDA_ARN` to your scraper function ARN. If you enable provider chat, update the web service to invoke your compatibility Lambda. Configure each worker with its own ECR image tag.
@@ -79,7 +79,7 @@ Recommended operations: configure SNS delivery monitoring and a failure destinat
 
 ## Optional provider Lambda
 
-If the web offers non-Qwen models, build the compatibility service from its own branch, supply its `DB_URI`, RunPod embedding/rewrite configuration, and MongoDB `keys` records. It expects provider keys by `api_key_id`. Recover/test the SQL-to-Mongo key bridge before enabling this path. This does not replace the active chat-all-models RunPod deployment.
+If the web offers non-Qwen models, deploy the external compatibility service, supply its `DB_URI`, RunPod embedding/rewrite configuration, and MongoDB `keys` records. It expects provider keys by `api_key_id`. Recover/test the SQL-to-Mongo key bridge before enabling this path. This does not replace the active chat-all-models RunPod deployment.
 
 <span class="source-label">Sources:</span> [indexer/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/indexer/Dockerfile) [scraper/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/scraper/Dockerfile) `indexer/src/handler.py` [web/backend/src/routes/webhook.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/routes/webhook.ts)
 {: .source-links }

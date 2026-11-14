@@ -10,7 +10,7 @@ title: "Ingestion, SNS and synchronization"
 1. The authenticated API checks KB ownership, uploads original binaries to S3 and creates SQL content rows.
 2. It publishes input-topic SNS events with action `ADD_FILE`, string KB ID, content identifier/type, title, optional raw text/crawl depth, and unique content-row ID.
 3. The KB Lambda reads `Records[0].Sns.MessageAttributes`, emits Processing to the update topic, then routes by type.
-4. The relevant worker extracts content, chunks it, calls chat-all-models for embeddings and writes Atlas documents.
+4. The relevant worker extracts content, chunks it, calls the chat service for embeddings and writes Atlas documents.
 5. Workers publish completion/failure, consumed-credit estimates, and optionally transcription, explanation, scene explanation, crawl counters or tree ID.
 6. SNS delivers an HTTPS callback to Express. Express correlates the SQL row by unique ID first, then by content identifier, updates fields/status and marks a KB indexed when no incomplete contents remain.
 7. React polls the API while work is in progress: list every five seconds; detail normally every ten seconds, or three seconds during deletion. These are polling updates, not a WebSocket sync bus.

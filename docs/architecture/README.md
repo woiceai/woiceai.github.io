@@ -19,7 +19,7 @@ title: "Architecture and complete service inventory"
 | Scraper Python Lambda | AWS Lambda container image from ECR | Headless browser extraction, links, chunks and embeddings | Website knowledge |
 | Indexing-update SNS topic | AWS SNS | Processing/completion/failure and extraction metadata | Web status synchronization |
 | HTTPS SNS subscriber | Express `/knowledgebase/webhook` | Update MySQL from worker status events | End-to-end UI status |
-| Chat-all-models worker | RunPod serverless GPU | Stella embeddings/retrieval, query rewrite, Mongo vector retrieval, GemFilter and generation | Default chat and ALL vector ingestion |
+| Chat service | RunPod serverless GPU | Stella embeddings/retrieval, query rewrite, Mongo vector retrieval, GemFilter and generation | Default chat and ALL vector ingestion |
 | Transcriber worker | RunPod serverless GPU | ASR, optional speaker diarization, transcript chunks/indexing | Audio |
 | Explain-vision worker | RunPod serverless GPU | Image descriptions, sampled video scene descriptions, video speech/indexing | Images/video |
 | Container registry | ECR for Lambda; Docker Hub or compatible registry for RunPod | Store deployable images | Build/release |
@@ -61,7 +61,7 @@ flowchart TD
 
 ## Active and compatibility paths
 
-The owner reports `chat-all-models` as the major working chat backend. In the web snapshot, `llmName === 'qwen'` calls RunPod directly; all other providers and key validation call the compatibility chat Lambda. Therefore a default-Qwen installation can avoid that chat Lambda, while a feature-complete installation of this web snapshot cannot assume it is unused. The public RunPod handler does not implement provider dispatch merely because the branch is named chat-all-models.
+The primary chat backend lives in `chat-service/`. In the web snapshot, `llmName === 'qwen'` calls RunPod directly; all other providers and key validation call the compatibility chat Lambda. Therefore a default-Qwen installation can avoid that chat Lambda, while a feature-complete installation of this web snapshot cannot assume it is unused. The public RunPod handler does not implement provider dispatch merely because the branch is named chat-all-models.
 
 The owner confirmed React + Express as the production web baseline. Laravel and Next.js are excluded from this service inventory and deployment.
 

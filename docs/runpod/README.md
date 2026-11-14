@@ -64,7 +64,7 @@ All GPU Dockerfiles contain two FROM statements; the final image starts from `py
 
 A RunPod job status COMPLETED only means the handler returned; inspect its application-level `KNOWLEDGEBASE.STATUS` too. Media handlers can return a Failed payload. Avoid duplicate retries while a previous job is still indexing.
 
-<span class="source-label">Sources:</span> [chat-service/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/chat-service/Dockerfile) [chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py) [woiceai-transcriber/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/Dockerfile) [woiceai-vision/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/vision-service/Dockerfile) [indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py)
+<span class="source-label">Sources:</span> [chat-service/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/chat-service/Dockerfile) [chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py) [audio-transcriber/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/Dockerfile) [vision-service/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/vision-service/Dockerfile) [indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py)
 {: .source-links }
 
 ## Build and publish a media image
@@ -73,12 +73,12 @@ After applying the transcriber secret-download change described above (or supply
 
 ```bash
 # Run from the transcriber repository root using its reviewed Dockerfile:
-docker buildx build --platform linux/amd64 --load -t YOUR_REGISTRY/woiceai-transcriber:YOUR_RELEASE .
-docker push YOUR_REGISTRY/woiceai-transcriber:YOUR_RELEASE
+docker buildx build --platform linux/amd64 --load -t YOUR_REGISTRY/audio-transcriber:YOUR_RELEASE .
+docker push YOUR_REGISTRY/audio-transcriber:YOUR_RELEASE
 # Run separately from the vision repository root:
 touch .env
-docker buildx build --platform linux/amd64 --load -t YOUR_REGISTRY/woiceai-vision:YOUR_RELEASE .
-docker push YOUR_REGISTRY/woiceai-vision:YOUR_RELEASE
+docker buildx build --platform linux/amd64 --load -t YOUR_REGISTRY/vision-service:YOUR_RELEASE .
+docker push YOUR_REGISTRY/vision-service:YOUR_RELEASE
 ```
 
 The transcriber command assumes you removed the historical token ARG clone steps or replaced them with a secret-mount flow; it is not a claim that the unmodified Dockerfile builds without gated-model credentials. On each endpoint, change the image to the new release, keep the appropriate handler CMD, bind variables and wait for a healthy worker before sending production work.
