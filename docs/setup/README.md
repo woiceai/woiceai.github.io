@@ -9,12 +9,11 @@ This is a recommended reconstruction order. It is not an automated infrastructur
 
 ## 1. Obtain the correct source trees
 
-Clone the consolidated repository once. Until the web import merges, check out its integration branch to get all six folders.
+Clone the consolidated repository once to get all six service folders.
 
 ```bash
 git clone https://github.com/asdkazmi/woiceai.git
 cd woiceai
-git switch integrate/web
 ```
 
 Use each service folder as its build context. See [Sources](../sources/README.md) for the directory map.

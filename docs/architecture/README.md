@@ -65,5 +65,5 @@ The owner reports `chat-all-models` as the major working chat backend. In the we
 
 The owner confirmed React + Express as the production web baseline. Laravel and Next.js are excluded from this service inventory and deployment.
 
-<span class="source-label">Sources:</span> [woiceai-web/backend/src/index.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/index.ts) [woiceai-web/backend/src/services/chatAIService.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/services/chatAIService.ts) `woiceai-ai/indexer/src/handler.py` [woiceai-ai/chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py)
+<span class="source-label">Sources:</span> [web/backend/src/index.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/index.ts) [web/backend/src/services/chatAIService.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/services/chatAIService.ts) `indexer/src/handler.py` [chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py)
 {: .source-links }

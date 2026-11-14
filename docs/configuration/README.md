@@ -79,5 +79,5 @@ Create dedicated database users; keep the Atlas URI on server/worker environment
 
 Use deployment secret storage, omit real `.env` files from Git, and avoid Docker COPY of secrets. Rotate a shared key in every producer/consumer, redeploy/restart affected processes, test, then revoke the previous key. Inspect image history/files for baked secrets before publishing a rebuilt image. Avoid copying unredacted logs: these sources log payloads and the legacy Lambda even logs a fetched provider key.
 
-<span class="source-label">Sources:</span> `woiceai-web/backend/src/config/env.example.txt` `woiceai-web/backend/src/services/runpodService.ts` [woiceai-ai/indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py) [woiceai-ai/chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py)
+<span class="source-label">Sources:</span> `web/backend/src/config/env.example.txt` `web/backend/src/services/runpodService.ts` [indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py) [chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py)
 {: .source-links }

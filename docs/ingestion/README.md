@@ -70,5 +70,5 @@ Changes to originals are not inherently propagated into stored vectors. A contro
 
 SNS redelivery, application-returned errors, nonuniform polling return types and source-key/KB-ID type mismatches can all cause partial results. The scraper's SNS parsing path differs from the KB parser, but the normal KB-to-scraper direct-invoke path avoids that wrapper. Do not wire it as a second independent subscriber without adapting/testing its event contract.
 
-<span class="source-label">Sources:</span> [woiceai-web/backend/src/services/knowledgeBaseService.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/services/knowledgeBaseService.ts) [woiceai-web/backend/src/routes/webhook.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/routes/webhook.ts) `woiceai-ai/indexer/src/handler.py` [woiceai-ai/scraper/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/scraper/src/handler.py)
+<span class="source-label">Sources:</span> [web/backend/src/services/knowledgeBaseService.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/services/knowledgeBaseService.ts) [web/backend/src/routes/webhook.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/routes/webhook.ts) `indexer/src/handler.py` [scraper/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/scraper/src/handler.py)
 {: .source-links }

@@ -35,7 +35,7 @@ Restore these build-context artifacts before `docker build`:
 - `Meta-Llama-3.1-8B-Instruct-gptq/` — local model directory; owner identified [hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4](https://huggingface.co/hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4) as the GPTQ source. Validate it with the custom loader.
 - Stella model files are downloaded by the Dockerfile; verify all tokenizer/config/dense-projection files and weight files are present. `HF_HUB_OFFLINE=1` prevents a missing artifact being fetched at runtime.
 
-Use `chat-service/Dockerfile` from the selected branch, not the old `woice_chat/Dockerfile`. See [Chat and models](../chat/README.md) for GemFilter. Create an empty `.env` to satisfy the historical COPY instruction, then inject real configuration at runtime.
+Use `chat-service/Dockerfile`. See [Chat and models](../chat/README.md) for GemFilter. Create an empty `.env` to satisfy the historical COPY instruction, then inject real configuration at runtime.
 
 ```bash
 # From chat-service, AFTER restoring the model artifacts:
@@ -64,7 +64,7 @@ All GPU Dockerfiles contain two FROM statements; the final image starts from `py
 
 A RunPod job status COMPLETED only means the handler returned; inspect its application-level `KNOWLEDGEBASE.STATUS` too. Media handlers can return a Failed payload. Avoid duplicate retries while a previous job is still indexing.
 
-<span class="source-label">Sources:</span> [woiceai-ai/chat-service/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/chat-service/Dockerfile) [woiceai-ai/chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py) [woiceai-transcriber/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/Dockerfile) [woiceai-vision/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/vision-service/Dockerfile) [woiceai-ai/indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py)
+<span class="source-label">Sources:</span> [chat-service/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/chat-service/Dockerfile) [chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py) [woiceai-transcriber/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/Dockerfile) [woiceai-vision/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/vision-service/Dockerfile) [indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py)
 {: .source-links }
 
 ## Build and publish a media image

@@ -33,14 +33,14 @@ This is a standalone, GitHub-ready documentation repository. Reviewed **November
 
 The WoiceAI repository organizes the services by directory.
 
-- [web/](https://github.com/asdkazmi/woiceai/tree/integrate/web/web)
+- [web/](https://github.com/asdkazmi/woiceai/tree/main/web)
 - [chat-service/](https://github.com/asdkazmi/woiceai/tree/main/chat-service)
 - [indexer/](https://github.com/asdkazmi/woiceai/tree/main/indexer)
 - [scraper/](https://github.com/asdkazmi/woiceai/tree/main/scraper)
 - [audio-transcriber/](https://github.com/asdkazmi/woiceai/tree/main/audio-transcriber)
 - [vision-service/](https://github.com/asdkazmi/woiceai/tree/main/vision-service)
 
-The web folder is available on the integration branch pending merge. Optional third-party connectors still depend on the compatibility Lambda described in the setup guide.
+Optional third-party connectors still depend on the compatibility Lambda described in the setup guide.
 
 ## Evidence labels
 
