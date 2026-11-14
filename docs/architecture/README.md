@@ -61,7 +61,7 @@ flowchart TD
 
 ## Active and compatibility paths
 
-The primary chat backend lives in `chat-service/`. In the web snapshot, `llmName === 'qwen'` calls RunPod directly; all other providers and key validation call the compatibility chat Lambda. Therefore a default-Qwen installation can avoid that chat Lambda, while a feature-complete installation of this web snapshot cannot assume it is unused. The public RunPod handler does not implement provider dispatch merely because the branch is named chat-all-models.
+The primary chat backend lives in `chat-service/`. In the web snapshot, `llmName === 'qwen'` calls RunPod directly; all other providers and key validation call the compatibility chat Lambda. Therefore a default-Qwen installation can avoid that chat Lambda, while a feature-complete installation of this web snapshot cannot assume it is unused.
 
 The owner confirmed React + Express as the production web baseline. Laravel and Next.js are excluded from this service inventory and deployment.
 

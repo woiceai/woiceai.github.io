@@ -9,7 +9,7 @@ title: "AWS: Lambda, ECR, S3 and SNS"
 
 | Unit | Build context | Container command | Trigger |
 | --- | --- | --- | --- |
-| KB router/indexer | `dev-woiceai-kb` / `indexer/` | `handler.lambda_handler` | SNS input topic |
+| KB router/indexer | `indexer/` | `handler.lambda_handler` | SNS input topic |
 | Website scraper | `scraper/` | `handler.scrapper` | Synchronous invoke from KB Lambda |
 | Optional provider chat | External compatibility Lambda | `handler.lambda_handler` | Direct API invoke, including key validation |
 
@@ -79,7 +79,7 @@ Recommended operations: configure SNS delivery monitoring and a failure destinat
 
 ## Optional provider Lambda
 
-If the web offers non-Qwen models, deploy the external compatibility service, supply its `DB_URI`, RunPod embedding/rewrite configuration, and MongoDB `keys` records. It expects provider keys by `api_key_id`. Recover/test the SQL-to-Mongo key bridge before enabling this path. This does not replace the active chat-all-models RunPod deployment.
+If the web offers non-Qwen models, deploy the external compatibility service, supply its `DB_URI`, RunPod embedding/rewrite configuration, and MongoDB `keys` records. It expects provider keys by `api_key_id`. Recover/test the SQL-to-Mongo key bridge before enabling this path. The compatibility Lambda runs alongside the RunPod chat service.
 
 <span class="source-label">Sources:</span> [indexer/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/indexer/Dockerfile) [scraper/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/scraper/Dockerfile) `indexer/src/handler.py` [web/backend/src/routes/webhook.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/routes/webhook.ts)
 {: .source-links }
