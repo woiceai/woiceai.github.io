@@ -68,7 +68,7 @@ Generated from literal router registrations in the reviewed source. Auth is enfo
 | POST | `/knowledgebase/sns` | [webhook](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/routes/webhook.ts) |
 | POST | `/api/webhook/sns` | [webhook](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/routes/webhook.ts) |
 
-`GET /api/health` is registered directly in `index.ts` and only reports process liveness. The agents router contains duplicate DELETE registrations for the same path in this snapshot.
+`GET /api/health` is registered directly in `index.ts` and only reports process liveness. The agents router contains duplicate DELETE registrations for the same path.
 
 ## RunPod payload examples
 

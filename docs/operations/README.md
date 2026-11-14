@@ -5,6 +5,8 @@ title: "Operations, acceptance tests and troubleshooting"
 
 # Operations, acceptance tests and troubleshooting
 
+Deployment source: [WoiceAI on `main`](https://github.com/asdkazmi/woiceai/tree/main).
+
 These are manual acceptance procedures for an isolated test KB. Cloud inference and uploads may incur costs. They were documented, not executed against production during this review.
 
 ## Release acceptance

@@ -5,6 +5,8 @@ title: "SQL migration inventory"
 
 # SQL migration inventory
 
+Deployment source: [`web/`](https://github.com/asdkazmi/woiceai/tree/main/web).
+
 [Database guide](README.md)
 
 Migration SQL is the authoritative column/default/index definition. Initialization order is in backend/src/index.ts.

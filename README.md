@@ -7,7 +7,7 @@ title: "WoiceAI 2.0 documentation"
 
 WoiceAI turns documents, websites, text, audio, images, and video into searchable knowledge bases; exposes configurable chat assistants over that knowledge; and composes assistants into visual conversational workflows.
 
-This is a standalone, GitHub-ready documentation repository. Reviewed **November 5, 2026** against the public source snapshots in [Sources](docs/sources/README.md). The owner's last working deployment is the intended baseline. Source inspection establishes implemented behavior; it does not establish the current health or configuration of a running cloud service.
+Deploy WoiceAI from [asdkazmi/woiceai](https://github.com/asdkazmi/woiceai) on `main`. The [installation guide](docs/setup/README.md) covers all six services and their infrastructure dependencies.
 
 ## Read the documentation
 
@@ -41,9 +41,3 @@ The WoiceAI repository organizes the services by directory.
 - [vision-service/](https://github.com/asdkazmi/woiceai/tree/main/vision-service)
 
 Optional third-party connectors still depend on the compatibility Lambda described in the setup guide.
-
-## Evidence labels
-
-**Source verified** means visible in the linked commit. **Owner supplied** means supplied with the documentation request, including architectural and model details. **Recommended procedure** means a proposed deployment or operational practice, not a claim about existing infrastructure. **Unverified** means cloud settings or behavior cannot be established from the available source.
-
-Actual secret values are intentionally absent. All templates use placeholders. No production deployment, AWS mutation, RunPod mutation, or GitHub publication was performed while preparing this documentation.

@@ -5,7 +5,7 @@ title: "Recovery questions and remaining evidence gaps"
 
 # Recovery questions and remaining evidence gaps
 
-The owner confirmed React + Express as the only web baseline, MongoDB Atlas for vector search, and the GPTQ Llama model source. Those questions are resolved. The documentation can be published now, but an exact production rebuild still requires the following non-secret records.
+Use the [installation guide](../setup/README.md) to deploy from the consolidated repository. The items below are specific to the deployment environment.
 
 | Missing record | Why it matters | How to recover |
 | --- | --- | --- |
@@ -27,4 +27,4 @@ Do not provide actual API keys, passwords, full secret URIs, tokens, or unredact
 
 ## Review scope
 
-All four public repositories and relevant AI service branches were inspected locally. Deployment templates use environment-specific placeholders. Source-level route/schema/environment inventories were generated. No AWS account inventory, signed-in RunPod configuration audit, live endpoint job, full application build or production end-to-end test was performed. Thus this is complete documentation of the available source and owner-specified topology, with explicit reconstruction gaps, rather than a certification that the current cloud installation is running.
+The [source map](../sources/README.md) lists the deployment folders. Configuration templates use installation-specific placeholders.

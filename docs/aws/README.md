@@ -24,7 +24,7 @@ Recommended shell outline; run from one service's build context, with AWS CLI au
 ```bash
 export AWS_REGION=us-east-1
 export AWS_ACCOUNT_ID=YOUR_ACCOUNT_ID
-export ECR_REPOSITORY=woiceai-kb
+export ECR_REPOSITORY=woice-indexer
 export IMAGE_TAG=YOUR_RELEASE_TAG
 export ECR_REGISTRY="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com"
 aws ecr create-repository --repository-name "$ECR_REPOSITORY" --region "$AWS_REGION"
@@ -35,7 +35,7 @@ docker buildx build --platform linux/amd64 --provenance=false --load -t "$ECR_RE
 docker push "$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 ```
 
-Skip repository creation if it already exists. Build separate images for KB and scraper. Deploy x86_64 functions for these historical x86 browser binaries. Validate architecture rather than building an Apple Silicon default image. ECR and the Lambda function must be in the appropriate deployment region. Select the image URI/digest when creating a container-image Lambda, attach the execution role, then inject [Python variables](../configuration/README.md).
+For the scraper, run from `scraper/` with `ECR_REPOSITORY=woice-scraper`. The documented Lambda names are `woiceIndexer` and `woiceScraper`. Skip repository creation if it already exists. Build separate images for KB and scraper. Deploy x86_64 functions for these historical x86 browser binaries. Validate architecture rather than building an Apple Silicon default image. ECR and the Lambda function must be in the appropriate deployment region. Select the image URI/digest when creating a container-image Lambda, attach the execution role, then inject [Python variables](../configuration/README.md).
 
 A Lambda function does not automatically redeploy when an existing ECR tag is pushed again. Update function code to the new image and wait for the update to complete. Prefer immutable release tags/digests:
 

@@ -9,9 +9,9 @@ title: "RunPod serverless services"
 
 | Service | Worker entrypoint | Build context |
 | --- | --- | --- |
-| Chat, retrieval and embeddings | `python3 -u /handler.py` | AI `chat-service/` |
-| Audio transcription/indexing | `python3 -u /app.py` | Transcriber repository root |
-| Explain vision/indexing | `python3 -u /app.py` | Vision repository root |
+| Chat, retrieval and embeddings | `python3 -u /handler.py` | `chat-service/` |
+| Audio transcription/indexing | `python3 -u /app.py` | `audio-transcriber/` |
+| Explain vision/indexing | `python3 -u /app.py` | `vision-service/` |
 
 Use `https://api.runpod.ai/v2/YOUR_ENDPOINT_ID` as the base URL for each endpoint you create. Send the API key in the `Authorization: Bearer RUNPOD_API_KEY` header and wrap the job payload in `{"input": ...}`.
 
@@ -31,8 +31,8 @@ Inject the chat worker’s MongoDB Atlas connection string through the `DB_URI` 
 
 Restore these build-context artifacts before `docker build`:
 
-- `merged-q4_k_m-model.gguf` — owner's locally compiled artifact, described by the owner as their GemFiltered/merged Llama variant; exact conversion inputs/checksum unavailable.
-- `Meta-Llama-3.1-8B-Instruct-gptq/` — local model directory; owner identified [hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4](https://huggingface.co/hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4) as the GPTQ source. Validate it with the custom loader.
+- `merged-q4_k_m-model.gguf` — Qwen GGUF for answer generation and query rewriting. Download a compatible variant and rename it to the expected filename, or update both the Dockerfile COPY and the handler path. [Qwen3-14B GGUF](https://huggingface.co/unsloth/Qwen3-14B-GGUF)
+- `Meta-Llama-3.1-8B-Instruct-gptq/` — Local model directory for GemFilter context selection. [Llama 3.1 GPTQ](https://huggingface.co/shuyuej/Meta-Llama-3.1-8B-Instruct-GPTQ)
 - Stella model files are downloaded by the Dockerfile; verify all tokenizer/config/dense-projection files and weight files are present. `HF_HUB_OFFLINE=1` prevents a missing artifact being fetched at runtime.
 
 Use `chat-service/Dockerfile`. See [Chat and models](../chat/README.md) for GemFilter. Create an empty `.env` to satisfy the historical COPY instruction, then inject real configuration at runtime.
@@ -50,11 +50,11 @@ The Dockerfile installs FFmpeg/libsndfile, NeMo 1.23.0, downloads Parakeet ASR p
 
 The historical Dockerfile places an HF token in authenticated Git clone URLs through a build ARG. For a publishable new image, change this to a BuildKit secret mount or pre-download model files in a controlled build step, copy only model artifacts, and remove Git remotes/credential-bearing metadata. Do not build/push with a real token using the historical pattern.
 
-Build from the repository root with an empty runtime credential environment. After securing the download step, build/tag/push a release image and deploy it to the transcription endpoint. Validate diarization separately from normal ASR.
+Build from `audio-transcriber/` with an empty runtime credential environment. After securing the download step, build/tag/push a release image and deploy it to the transcription endpoint. Validate diarization separately from normal ASR.
 
 ## Rebuild explain vision
 
-Build from the vision repository root. It downloads `Qwen/Qwen2.5-VL-7B-Instruct` and `distil-whisper/distil-large-v3`; loads flash-attention with bfloat16 visual inference; and needs FFmpeg/libsndfile. Create an empty `.env` for the historical COPY line, build/tag/push, inject runtime variables and deploy.
+Build from `vision-service/`. It downloads `Qwen/Qwen2.5-VL-7B-Instruct` and `distil-whisper/distil-large-v3`; loads flash-attention with bfloat16 visual inference; and needs FFmpeg/libsndfile. Create an empty `.env` for the historical COPY line, build/tag/push, inject runtime variables and deploy.
 
 All GPU Dockerfiles contain two FROM statements; the final image starts from `python:3.11-slim`, then manually installs an Ubuntu CUDA repository. The initial NVIDIA FROM is not the final inherited runtime. This mixed-distribution recipe may need repair for a new build. Preserve known working image digests; test CUDA, torch, flash-attn and model loading together before release.
 
@@ -69,13 +69,13 @@ A RunPod job status COMPLETED only means the handler returned; inspect its appli
 
 ## Build and publish a media image
 
-After applying the transcriber secret-download change described above (or supplying already downloaded model artifacts through a reviewed Dockerfile), use the same release procedure for each media repository:
+After applying the transcriber secret-download change described above (or supplying already downloaded model artifacts through a reviewed Dockerfile), use the same release procedure for each media service directory:
 
 ```bash
-# Run from the transcriber repository root using its reviewed Dockerfile:
+# Run from `audio-transcriber/` using its reviewed Dockerfile:
 docker buildx build --platform linux/amd64 --load -t YOUR_REGISTRY/audio-transcriber:YOUR_RELEASE .
 docker push YOUR_REGISTRY/audio-transcriber:YOUR_RELEASE
-# Run separately from the vision repository root:
+# Run separately from `vision-service/`:
 touch .env
 docker buildx build --platform linux/amd64 --load -t YOUR_REGISTRY/vision-service:YOUR_RELEASE .
 docker push YOUR_REGISTRY/vision-service:YOUR_RELEASE

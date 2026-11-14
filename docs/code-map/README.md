@@ -26,7 +26,7 @@ title: "Code map and extension points"
 
 ## Linked implementation inventory
 
-Only service-specific branch directories are included; stale siblings in AI branches are excluded. Deprecated/archive files are excluded from this active map.
+Paths below are relative to the root of the WoiceAI repository on `main`.
 
 ### web
 
@@ -149,7 +149,7 @@ Only service-specific branch directories are included; stale siblings in AI bran
 - [frontend/src/services/urlTreeService.ts](https://github.com/asdkazmi/woiceai/blob/main/web/frontend/src/services/urlTreeService.ts)
 - [frontend/src/setupTests.ts](https://github.com/asdkazmi/woiceai/blob/main/web/frontend/src/setupTests.ts)
 
-### chat
+### chat-service
 
 - [chat-service/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/chat-service/Dockerfile)
 - [chat-service/requirements.txt](https://github.com/asdkazmi/woiceai/blob/main/chat-service/requirements.txt)
@@ -168,7 +168,7 @@ Only service-specific branch directories are included; stale siblings in AI bran
 - [chat-service/src/modules/stella.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/modules/stella.py)
 - [chat-service/src/modules/vector.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/modules/vector.py)
 
-### kb
+### indexer
 
 - [indexer/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/indexer/Dockerfile)
 - [indexer/app.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/app.py)
@@ -183,7 +183,7 @@ Only service-specific branch directories are included; stale siblings in AI bran
 - [indexer/src/modules/s3download.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/s3download.py)
 - `indexer/src/modules/sns.py`
 
-### scrapper
+### scraper
 
 - [scraper/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/scraper/Dockerfile)
 - [scraper/app.py](https://github.com/asdkazmi/woiceai/blob/main/scraper/app.py)
@@ -199,7 +199,7 @@ Only service-specific branch directories are included; stale siblings in AI bran
 - [scraper/src/modules/seleniumCode.py](https://github.com/asdkazmi/woiceai/blob/main/scraper/src/modules/seleniumCode.py)
 - `scraper/src/modules/sns.py`
 
-### transcriber
+### audio-transcriber
 
 - [Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/Dockerfile)
 - [requirements.txt](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/requirements.txt)
@@ -216,7 +216,7 @@ Only service-specific branch directories are included; stale siblings in AI bran
 - [src/modules/sns.py](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/src/modules/sns.py)
 - [src/transcriber.py](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/src/transcriber.py)
 
-### vision
+### vision-service
 
 - [Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/vision-service/Dockerfile)
 - [requirements.txt](https://github.com/asdkazmi/woiceai/blob/main/vision-service/requirements.txt)

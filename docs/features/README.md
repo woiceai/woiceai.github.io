@@ -49,7 +49,7 @@ JWT password authentication, protected web APIs, optional Google OAuth, connecto
 
 ## Status of the evidence
 
-The owner reports that the last deployment was complete and stable, including multimodal KB ingestion and advanced chat. This documentation preserves that operational context while reporting differences visible in the public snapshot. Billing enforcement, subscriptions, automatic re-crawl schedules, and full intent classification must not be inferred solely from UI labels or older README checklists.
+The capability descriptions refer to the consolidated source on `main`. Validate service health in your own deployment.
 
 <span class="source-label">Sources:</span> [web/backend/src/routes/knowledgeBase.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/routes/knowledgeBase.ts) [web/backend/src/models/ChatAI.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/models/ChatAI.ts) [web/backend/src/services/agentExecutionService/nodeExecutors.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/services/agentExecutionService/nodeExecutors.ts) [vision-service/src/app.py](https://github.com/asdkazmi/woiceai/blob/main/vision-service/src/app.py) [audio-transcriber/src/app.py](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/src/app.py)
 {: .source-links }

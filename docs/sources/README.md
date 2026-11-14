@@ -17,7 +17,7 @@ title: "Reviewed sources"
 ## Additional primary references
 
 - [GemFilter upstream](https://github.com/SalesforceAIResearch/GemFilter): source and installation reference; WoiceAI uses adapted vendored modules.
-- [Owner-identified GPTQ model](https://huggingface.co/hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4).
+- [GemFilter GPTQ model](https://huggingface.co/shuyuej/Meta-Llama-3.1-8B-Instruct-GPTQ).
 - [MongoDB Vector Search index documentation](https://www.mongodb.com/docs/vector-search/indexes/vector-search-type/).
 - [RunPod request documentation](https://docs.runpod.io/serverless/endpoints/send-requests).
 - [AWS Lambda container images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html).

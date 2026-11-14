@@ -61,9 +61,9 @@ flowchart TD
 
 ## Active and compatibility paths
 
-The primary chat backend lives in `chat-service/`. In the web snapshot, `llmName === 'qwen'` calls RunPod directly; all other providers and key validation call the compatibility chat Lambda. Therefore a default-Qwen installation can avoid that chat Lambda, while a feature-complete installation of this web snapshot cannot assume it is unused.
+The primary chat backend lives in `chat-service/`. In the web API, `llmName === 'qwen'` calls RunPod directly; all other providers and key validation call the compatibility chat Lambda. Therefore a default-Qwen installation can avoid that chat Lambda, while a feature-complete installation of the web API cannot assume it is unused.
 
-The owner confirmed React + Express as the production web baseline. Laravel and Next.js are excluded from this service inventory and deployment.
+The frontend and API live together in `web/`.
 
 <span class="source-label">Sources:</span> [web/backend/src/index.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/index.ts) [web/backend/src/services/chatAIService.ts](https://github.com/asdkazmi/woiceai/blob/main/web/backend/src/services/chatAIService.ts) `indexer/src/handler.py` [chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py)
 {: .source-links }

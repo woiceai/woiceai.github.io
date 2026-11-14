@@ -23,22 +23,18 @@ The handler has a separate `responseOnly` branch that uses the GGUF model withou
 | --- | --- | --- |
 | Document/query embeddings | `dunzhang/stella_en_400M_v5`, local `stella_en_400M_v5` | Chat Dockerfile; `modules/stella.py` |
 | Context selection | Local `Meta-Llama-3.1-8B-Instruct-gptq` directory | Chat handler + custom `llama_gemfilter/load_model.py` |
-| GPTQ download identified by owner | [hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4](https://huggingface.co/hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4) | Download to directory expected by Dockerfile; validate custom loader compatibility |
+| GemFilter model download | [shuyuej/Meta-Llama-3.1-8B-Instruct-GPTQ](https://huggingface.co/shuyuej/Meta-Llama-3.1-8B-Instruct-GPTQ) | Download to directory expected by Dockerfile; validate custom loader compatibility |
 | GGUF generation/query rewrite | `merged-q4_k_m-model.gguf` | Chat handler; llama-cpp-python |
 | Audio ASR | `nvidia/parakeet-rnnt-0.6b` | Transcriber `src/models.py`, Dockerfile |
 | Speaker diarization | pyannote speaker-diarization-3.1; segmentation-3.0; wespeaker-voxceleb-resnet34-LM | Transcriber model config/downloads |
 | Image/video description | `Qwen/Qwen2.5-VL-7B-Instruct` | Vision `src/modules/models.py` |
 | Video ASR | `distil-whisper/distil-large-v3` | Vision `src/modules/transcribing_video.py` |
 
-The UI label `Qwen-14b-Instruct` is a connector catalog label; it does not prove the actual GGUF architecture or weight provenance. The owner says the merged artifact was compiled locally and was their GemFiltered Llama variant. The public source separately loads a GGUF generator and GPTQ context selector. Preserve both facts: no exact conversion recipe, original GGUF base model, checksum or exact deployed-image-to-source build manifest was supplied.
+The handler loads `merged-q4_k_m-model.gguf` for answer generation and query rewriting. To deploy a replacement, download a compatible GGUF variant and either rename it to the expected filename or update both the Dockerfile COPY and the handler path. Llama GPTQ supplies GemFilter context selection. [Qwen3-14B GGUF](https://huggingface.co/unsloth/Qwen3-14B-GGUF)
 
 ## Get and use GemFilter
 
-The upstream implementation is [SalesforceAIResearch/GemFilter](https://github.com/SalesforceAIResearch/GemFilter). To obtain it for study:
-
-```bash
-git clone https://github.com/SalesforceAIResearch/GemFilter.git
-```
+The adapted implementation lives in `chat-service/src/modules/llama_gemfilter/`.
 
 WoiceAI already vendors its adapted implementation under `chat-service/src/modules/llama_gemfilter/`. Preserve this adaptation and the project's pinned inference dependencies when reproducing the worker. Upstream installation is a separate research environment, not a drop-in replacement for these adapted files.
 

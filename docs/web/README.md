@@ -5,7 +5,7 @@ title: "Deploy React and Express"
 
 # Deploy React and Express
 
-The owner confirmed **React + Express** as the production baseline. Laravel/Next.js are excluded from this deployment guide.
+The React frontend and Express API live under `web/`. Follow [web/README.md](https://github.com/asdkazmi/woiceai/blob/main/web/README.md) for service-specific commands.
 
 ## What to deploy
 

@@ -7,6 +7,7 @@ title: WoiceAI platform
   <p class="eyebrow">WoiceAI 2.0</p>
   <h1>Build assistants with your own knowledge</h1>
   <p>Turn documents, websites, audio and video into searchable knowledge. Build assistants that answer with sources, then connect them to visual workflows.</p>
+  <p>Deploy the full project from <a href="https://github.com/asdkazmi/woiceai/tree/main">WoiceAI on main</a>.</p>
   {% assign start = site.pages | where: 'path', 'docs/getting-started/README.md' | first %}
   <a class="button" href="{{ start.url | relative_url }}">Get started <span aria-hidden="true">→</span></a>
 </div>

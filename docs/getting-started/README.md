@@ -5,6 +5,8 @@ title: Getting started
 
 # Getting started
 
+Deployment source: [WoiceAI on `main`](https://github.com/asdkazmi/woiceai/tree/main).
+
 WoiceAI lets you build AI assistants and conversational workflows from your own sources. A knowledge base organizes the material, an assistant retrieves it to answer questions, and an agent combines assistants with messages and branching logic.
 
 ## Choose where to begin

@@ -5,14 +5,14 @@ title: "Install the complete project"
 
 # Install the complete project
 
-This is a recommended reconstruction order. It is not an automated infrastructure deployment. Resolve the [recovery questions](../gaps/README.md) before promising an exact reproduction of the owner's live environment.
+Start from the WoiceAI repository on `main` and deploy the services in dependency order.
 
-## 1. Obtain the correct source trees
+## 1. Clone WoiceAI
 
 Clone the consolidated repository once to get all six service folders.
 
 ```bash
-git clone https://github.com/asdkazmi/woiceai.git
+git clone --branch main https://github.com/asdkazmi/woiceai.git
 cd woiceai
 ```
 

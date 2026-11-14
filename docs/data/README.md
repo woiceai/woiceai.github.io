@@ -7,7 +7,7 @@ title: "Databases and vector indexing"
 
 ## MongoDB Atlas is required for this project
 
-Use **MongoDB Atlas** with Vector Search. The owner explicitly confirmed Atlas as the intended deployment. A plain local Community MongoDB process is not an adequate replacement for the project's `$vectorSearch` dependency. This guide does not attempt alternate MongoDB deployment products.
+Use **MongoDB Atlas** with Vector Search. A plain local Community MongoDB process is not an adequate replacement for the project's `$vectorSearch` dependency. This guide does not attempt alternate MongoDB deployment products.
 
 Create an Atlas cluster with Vector Search support, a least-privilege database user, and network access for the API, Lambda and RunPod workers. Use TLS and the Atlas connection URI. Configure `MONGODB_URI` in Express and `DB_URI` in every Python worker to the same cluster. Python hardcodes `woice-ai-kb`; keep the web `MONGODB_DATABASE` aligned.
 

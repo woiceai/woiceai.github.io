@@ -5,6 +5,8 @@ title: "Visual workflows and conversational automations"
 
 # Visual workflows and conversational automations
 
+Deployment source: [`web/`](https://github.com/asdkazmi/woiceai/tree/main/web).
+
 ## Architecture
 
 The React builder uses `@xyflow/react` nodes/edges. A saved agent has a graph and publishing/settings metadata in MySQL. Express executes that graph in `agentExecutionService.ts`; there is no separate workflow server to deploy for the implemented nodes. Chat AI nodes call the same assistant service and RunPod/provider paths as ordinary chat.

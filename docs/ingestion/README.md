@@ -5,6 +5,8 @@ title: "Ingestion, SNS and synchronization"
 
 # Ingestion, SNS and synchronization
 
+Deployment source: [`indexer/`](https://github.com/asdkazmi/woiceai/tree/main/indexer).
+
 ## Add content
 
 1. The authenticated API checks KB ownership, uploads original binaries to S3 and creates SQL content rows.

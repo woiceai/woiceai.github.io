@@ -68,7 +68,7 @@ The double-brace values in the supplied INI templates are platform references, n
 
 - Input topic: `web/backend/src/services/aws/snsService.ts`.
 - Provider chat and validation ARN: `lambdaService.ts`, `lambdaValidationService.ts`.
-- Update topic in both Lambda branches: `indexer/src/modules/sns.py`, `scraper/src/modules/sns.py`; changing `TOPIC_ARN` alone does not change these.
+- Update topic in both Lambda workers: `indexer/src/modules/sns.py`, `scraper/src/modules/sns.py`; changing `TOPIC_ARN` alone does not change these.
 - Python MongoDB database name: worker `mongo.py`, scraper handler, chat handler.
 - Vector collection/path/index name: chat `modules/vector.py`, ingest writers' `bgeVectors` fields.
 - Models/artifact paths: chat handler/Dockerfile, transcriber models/Dockerfile, vision models/transcribing_video/Dockerfile.
