@@ -9,7 +9,7 @@ title: "RunPod serverless services"
 
 | Service | Worker entrypoint | Build context |
 | --- | --- | --- |
-| Chat, retrieval and embeddings | `python3 -u /handler.py` | AI `chat-all-models/chat-with-all-models/` |
+| Chat, retrieval and embeddings | `python3 -u /handler.py` | AI `chat-service/` |
 | Audio transcription/indexing | `python3 -u /app.py` | Transcriber repository root |
 | Explain vision/indexing | `python3 -u /app.py` | Vision repository root |
 
@@ -35,10 +35,10 @@ Restore these build-context artifacts before `docker build`:
 - `Meta-Llama-3.1-8B-Instruct-gptq/` — local model directory; owner identified [hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4](https://huggingface.co/hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4) as the GPTQ source. Validate it with the custom loader.
 - Stella model files are downloaded by the Dockerfile; verify all tokenizer/config/dense-projection files and weight files are present. `HF_HUB_OFFLINE=1` prevents a missing artifact being fetched at runtime.
 
-Use `chat-with-all-models/Dockerfile` from the selected branch, not the old `woice_chat/Dockerfile`. See [Chat and models](../chat/README.md) for GemFilter. Create an empty `.env` to satisfy the historical COPY instruction, then inject real configuration at runtime.
+Use `chat-service/Dockerfile` from the selected branch, not the old `woice_chat/Dockerfile`. See [Chat and models](../chat/README.md) for GemFilter. Create an empty `.env` to satisfy the historical COPY instruction, then inject real configuration at runtime.
 
 ```bash
-# From chat-with-all-models, AFTER restoring the model artifacts:
+# From chat-service, AFTER restoring the model artifacts:
 touch .env
 docker buildx build --platform linux/amd64 --load -t YOUR_REGISTRY/woiceai-chat:YOUR_RELEASE .
 docker push YOUR_REGISTRY/woiceai-chat:YOUR_RELEASE
@@ -64,7 +64,7 @@ All GPU Dockerfiles contain two FROM statements; the final image starts from `py
 
 A RunPod job status COMPLETED only means the handler returned; inspect its application-level `KNOWLEDGEBASE.STATUS` too. Media handlers can return a Failed payload. Avoid duplicate retries while a previous job is still indexing.
 
-<span class="source-label">Sources:</span> [woiceai-ai/chat-with-all-models/Dockerfile](https://github.com/asdkazmi/woiceai-ai/blob/699361213594230ce1a4bad9085eeb657e5a8e8a/chat-with-all-models/Dockerfile) [woiceai-ai/chat-with-all-models/src/handler.py](https://github.com/asdkazmi/woiceai-ai/blob/699361213594230ce1a4bad9085eeb657e5a8e8a/chat-with-all-models/src/handler.py) [woiceai-transcriber/Dockerfile](https://github.com/asdkazmi/woiceai-transcriber/blob/fa7dfed55433d2cb4a56100ead970d0b16499eef/Dockerfile) [woiceai-vision/Dockerfile](https://github.com/asdkazmi/woiceai-vision/blob/6bfd7581c2d3ee7ea7f79100a2eb624076ae01e2/Dockerfile) [woiceai-ai/woice_kb/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai-ai/blob/0e81e4185613358646292ccb5e0fdcbca639febf/woice_kb/src/modules/embeddings.py)
+<span class="source-label">Sources:</span> [woiceai-ai/chat-service/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/chat-service/Dockerfile) [woiceai-ai/chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py) [woiceai-transcriber/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/audio-transcriber/Dockerfile) [woiceai-vision/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/vision-service/Dockerfile) [woiceai-ai/indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py)
 {: .source-links }
 
 ## Build and publish a media image

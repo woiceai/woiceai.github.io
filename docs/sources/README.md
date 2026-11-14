@@ -5,6 +5,18 @@ title: "Reviewed sources"
 
 # Reviewed sources
 
+## Current source layout
+
+- [web/](https://github.com/asdkazmi/woiceai/tree/integrate/web/web)
+- [chat-service/](https://github.com/asdkazmi/woiceai/tree/main/chat-service)
+- [indexer/](https://github.com/asdkazmi/woiceai/tree/main/indexer)
+- [scraper/](https://github.com/asdkazmi/woiceai/tree/main/scraper)
+- [audio-transcriber/](https://github.com/asdkazmi/woiceai/tree/main/audio-transcriber)
+- [vision-service/](https://github.com/asdkazmi/woiceai/tree/main/vision-service)
+
+The table below records the historical snapshots used for the original audit.
+
+
 Reviewed November 5, 2026. Links throughout this documentation are pinned to these commits.
 
 | Service | Repository | Branch | Commit |

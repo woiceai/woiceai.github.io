@@ -9,8 +9,8 @@ title: "AWS: Lambda, ECR, S3 and SNS"
 
 | Unit | Branch / build context | Container command | Trigger |
 | --- | --- | --- | --- |
-| KB router/indexer | `dev-woiceai-kb` / `woice_kb/` | `handler.lambda_handler` | SNS input topic |
-| Website scraper | `dev-scrapper` / `scrapper/` | `handler.scrapper` | Synchronous invoke from KB Lambda |
+| KB router/indexer | `dev-woiceai-kb` / `indexer/` | `handler.lambda_handler` | SNS input topic |
+| Website scraper | `dev-scrapper` / `scraper/` | `handler.scrapper` | Synchronous invoke from KB Lambda |
 | Optional provider chat | `dev-woiceai-chat` / `woice_chat/` | `handler.lambda_handler` | Direct API invoke, including key validation |
 
 Set `SCRAPPER_LAMBDA_ARN` to your scraper function ARN. If you enable provider chat, update the web service to invoke your compatibility Lambda. Configure each worker with its own ECR image tag.
@@ -81,5 +81,5 @@ Recommended operations: configure SNS delivery monitoring and a failure destinat
 
 If the web offers non-Qwen models, build the compatibility service from its own branch, supply its `DB_URI`, RunPod embedding/rewrite configuration, and MongoDB `keys` records. It expects provider keys by `api_key_id`. Recover/test the SQL-to-Mongo key bridge before enabling this path. This does not replace the active chat-all-models RunPod deployment.
 
-<span class="source-label">Sources:</span> [woiceai-ai/woice_kb/Dockerfile](https://github.com/asdkazmi/woiceai-ai/blob/0e81e4185613358646292ccb5e0fdcbca639febf/woice_kb/Dockerfile) [woiceai-ai/scrapper/Dockerfile](https://github.com/asdkazmi/woiceai-ai/blob/058a3ed1a16ec39d12ea7c6ddba43951049cf1c5/scrapper/Dockerfile) `woiceai-ai/woice_kb/src/handler.py` [woiceai-web/backend/src/routes/webhook.ts](https://github.com/asdkazmi/woiceai-web/blob/8520c824ad0bf2ae9ad403fdca358757c1be98ae/backend/src/routes/webhook.ts) [woiceai-ai/woice_chat/src/handler.py](https://github.com/asdkazmi/woiceai-ai/blob/fbf49ca55d83a8020242ba251939b501606dbef5/woice_chat/src/handler.py)
+<span class="source-label">Sources:</span> [woiceai-ai/indexer/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/indexer/Dockerfile) [woiceai-ai/scraper/Dockerfile](https://github.com/asdkazmi/woiceai/blob/main/scraper/Dockerfile) `woiceai-ai/indexer/src/handler.py` [woiceai-web/backend/src/routes/webhook.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/routes/webhook.ts) [woiceai-ai/woice_chat/src/handler.py](https://github.com/asdkazmi/woiceai-ai/blob/fbf49ca55d83a8020242ba251939b501606dbef5/woice_chat/src/handler.py)
 {: .source-links }

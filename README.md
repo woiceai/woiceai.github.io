@@ -31,14 +31,16 @@ This is a standalone, GitHub-ready documentation repository. Reviewed **November
 
 ## Deployment baseline
 
-- Web: `asdkazmi/woiceai-web`, branch `main` (React + Express).
-- AWS knowledge-base worker: `asdkazmi/woiceai-ai`, branch `dev-woiceai-kb`, folder `woice_kb`.
-- AWS scraper: same repository, branch `dev-scrapper`, folder `scrapper`.
-- RunPod chat **and embeddings**: same repository, branch `chat-all-models`, folder `chat-with-all-models`.
-- RunPod transcription: `asdkazmi/woiceai-transcriber`, branch `main`.
-- RunPod explain vision: `asdkazmi/woiceai-vision`, branch `master`.
+The WoiceAI repository organizes the services by directory.
 
-Do not deploy the AI repository's `main` tree as though it contained the latest complete system. The `dev-woiceai-chat` branch is not the owner's active major chat backend. The current web source nevertheless still invokes the compatibility chat Lambda for third-party providers and API-key validation; those optional paths need that compatibility service or a code migration.
+- [web/](https://github.com/asdkazmi/woiceai/tree/integrate/web/web)
+- [chat-service/](https://github.com/asdkazmi/woiceai/tree/main/chat-service)
+- [indexer/](https://github.com/asdkazmi/woiceai/tree/main/indexer)
+- [scraper/](https://github.com/asdkazmi/woiceai/tree/main/scraper)
+- [audio-transcriber/](https://github.com/asdkazmi/woiceai/tree/main/audio-transcriber)
+- [vision-service/](https://github.com/asdkazmi/woiceai/tree/main/vision-service)
+
+The web folder is available on the integration branch pending merge. Optional third-party connectors still depend on the compatibility Lambda described in the setup guide.
 
 ## Evidence labels
 

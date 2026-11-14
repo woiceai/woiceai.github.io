@@ -19,7 +19,7 @@ The repository README requests Node 20.15.1+ and MySQL 8+. React in the actual p
 ## Local setup
 
 ```bash
-cd woiceai-web/backend
+cd web/backend
 npm install
 # Copy templates/web-backend.env.example from this documentation to backend/.env.
 # Fill the values locally using your secret store.
@@ -29,7 +29,7 @@ npm run dev
 In another terminal:
 
 ```bash
-cd woiceai-web/frontend
+cd web/frontend
 npm install
 # Create .env with REACT_APP_API_URL=http://localhost:5000/api
 npm start
@@ -62,5 +62,5 @@ No provider/AWS/RunPod credential belongs in `REACT_APP_*`; those values are pub
 
 `start.sh` and `start-ngrok.sh` are development helpers. Ngrok is useful for receiving SNS callbacks locally; after restarting a temporary tunnel, update the SNS subscription URL and confirm it again. It is not the documented production host.
 
-<span class="source-label">Sources:</span> [woiceai-web/backend/package.json](https://github.com/asdkazmi/woiceai-web/blob/8520c824ad0bf2ae9ad403fdca358757c1be98ae/backend/package.json) [woiceai-web/frontend/package.json](https://github.com/asdkazmi/woiceai-web/blob/8520c824ad0bf2ae9ad403fdca358757c1be98ae/frontend/package.json) [woiceai-web/backend/src/index.ts](https://github.com/asdkazmi/woiceai-web/blob/8520c824ad0bf2ae9ad403fdca358757c1be98ae/backend/src/index.ts) [woiceai-web/backend/src/config/googleAuth.ts](https://github.com/asdkazmi/woiceai-web/blob/8520c824ad0bf2ae9ad403fdca358757c1be98ae/backend/src/config/googleAuth.ts)
+<span class="source-label">Sources:</span> [woiceai-web/backend/package.json](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/package.json) [woiceai-web/frontend/package.json](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/frontend/package.json) [woiceai-web/backend/src/index.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/index.ts) [woiceai-web/backend/src/config/googleAuth.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/config/googleAuth.ts)
 {: .source-links }

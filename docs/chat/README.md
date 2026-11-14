@@ -40,7 +40,7 @@ The upstream implementation is [SalesforceAIResearch/GemFilter](https://github.c
 git clone https://github.com/SalesforceAIResearch/GemFilter.git
 ```
 
-WoiceAI already vendors its adapted implementation under `chat-with-all-models/src/modules/llama_gemfilter/`. Preserve this adaptation and the project's pinned inference dependencies when reproducing the worker. Upstream installation is a separate research environment, not a drop-in replacement for these adapted files.
+WoiceAI already vendors its adapted implementation under `chat-service/src/modules/llama_gemfilter/`. Preserve this adaptation and the project's pinned inference dependencies when reproducing the worker. Upstream installation is a separate research environment, not a drop-in replacement for these adapted files.
 
 In WoiceAI, `handler.py` selects `modified='llama_gemfilter'`, `topk=1024`, `select_layer_idx=13`, enables selection and reduces layers. `applygemfilter.py` invokes `my_greedy_generate_selection` and extracts the selected `<book>` content. This is runtime context filtering; it does not itself provide a GGUF conversion/export command. Recreating the owner's merged artifact still requires the original model/conversion details or a deliberately validated replacement.
 
@@ -76,5 +76,5 @@ OpenAI/Gemini/Cerebras in the web snapshot invoke the compatibility Lambda; the 
 
 Restrictions live in Atlas `restricted-queries` with numeric KB IDs. They are model-mediated query validation, not a hard authorization boundary for data isolation. KB ownership/filtering must remain enforced independently. Citations indicate source linkage produced by the model; they are not a guarantee that each statement is entailed by a source.
 
-<span class="source-label">Sources:</span> [woiceai-ai/chat-with-all-models/src/handler.py](https://github.com/asdkazmi/woiceai-ai/blob/699361213594230ce1a4bad9085eeb657e5a8e8a/chat-with-all-models/src/handler.py) [woiceai-ai/chat-with-all-models/src/modules/response.py](https://github.com/asdkazmi/woiceai-ai/blob/699361213594230ce1a4bad9085eeb657e5a8e8a/chat-with-all-models/src/modules/response.py) [woiceai-ai/chat-with-all-models/src/modules/applygemfilter.py](https://github.com/asdkazmi/woiceai-ai/blob/699361213594230ce1a4bad9085eeb657e5a8e8a/chat-with-all-models/src/modules/applygemfilter.py) [woiceai-web/backend/src/services/chatAIService.ts](https://github.com/asdkazmi/woiceai-web/blob/8520c824ad0bf2ae9ad403fdca358757c1be98ae/backend/src/services/chatAIService.ts)
+<span class="source-label">Sources:</span> [woiceai-ai/chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py) [woiceai-ai/chat-service/src/modules/response.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/modules/response.py) [woiceai-ai/chat-service/src/modules/applygemfilter.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/modules/applygemfilter.py) [woiceai-web/backend/src/services/chatAIService.ts](https://github.com/asdkazmi/woiceai/blob/8c3dbaf/web/backend/src/services/chatAIService.ts)
 {: .source-links }

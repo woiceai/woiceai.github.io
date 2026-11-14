@@ -68,7 +68,7 @@ The double-brace values in the supplied INI templates are platform references, n
 
 - Input topic: `web/backend/src/services/aws/snsService.ts`.
 - Provider chat and validation ARN: `lambdaService.ts`, `lambdaValidationService.ts`.
-- Update topic in both Lambda branches: `woice_kb/src/modules/sns.py`, `scrapper/src/modules/sns.py`; changing `TOPIC_ARN` alone does not change these.
+- Update topic in both Lambda branches: `indexer/src/modules/sns.py`, `scraper/src/modules/sns.py`; changing `TOPIC_ARN` alone does not change these.
 - Python MongoDB database name: worker `mongo.py`, scraper handler, chat handler.
 - Vector collection/path/index name: chat `modules/vector.py`, ingest writers' `bgeVectors` fields.
 - Models/artifact paths: chat handler/Dockerfile, transcriber models/Dockerfile, vision models/transcribing_video/Dockerfile.
@@ -79,5 +79,5 @@ Create dedicated database users; keep the Atlas URI on server/worker environment
 
 Use deployment secret storage, omit real `.env` files from Git, and avoid Docker COPY of secrets. Rotate a shared key in every producer/consumer, redeploy/restart affected processes, test, then revoke the previous key. Inspect image history/files for baked secrets before publishing a rebuilt image. Avoid copying unredacted logs: these sources log payloads and the legacy Lambda even logs a fetched provider key.
 
-<span class="source-label">Sources:</span> `woiceai-web/backend/src/config/env.example.txt` `woiceai-web/backend/src/services/runpodService.ts` [woiceai-ai/woice_kb/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai-ai/blob/0e81e4185613358646292ccb5e0fdcbca639febf/woice_kb/src/modules/embeddings.py) [woiceai-ai/chat-with-all-models/src/handler.py](https://github.com/asdkazmi/woiceai-ai/blob/699361213594230ce1a4bad9085eeb657e5a8e8a/chat-with-all-models/src/handler.py)
+<span class="source-label">Sources:</span> `woiceai-web/backend/src/config/env.example.txt` `woiceai-web/backend/src/services/runpodService.ts` [woiceai-ai/indexer/src/modules/embeddings.py](https://github.com/asdkazmi/woiceai/blob/main/indexer/src/modules/embeddings.py) [woiceai-ai/chat-service/src/handler.py](https://github.com/asdkazmi/woiceai/blob/main/chat-service/src/handler.py)
 {: .source-links }

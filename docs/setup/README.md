@@ -9,18 +9,15 @@ This is a recommended reconstruction order. It is not an automated infrastructur
 
 ## 1. Obtain the correct source trees
 
-Use separate clones because service branches carry stale copies of sibling directories:
+Clone the consolidated repository once. Until the web import merges, check out its integration branch to get all six folders.
 
 ```bash
-git clone https://github.com/asdkazmi/woiceai-web.git
-git clone --branch chat-all-models --single-branch https://github.com/asdkazmi/woiceai-ai.git woiceai-chat
-git clone --branch dev-woiceai-kb --single-branch https://github.com/asdkazmi/woiceai-ai.git woiceai-kb
-git clone --branch dev-scrapper --single-branch https://github.com/asdkazmi/woiceai-ai.git woiceai-scrapper
-git clone https://github.com/asdkazmi/woiceai-transcriber.git
-git clone --branch master https://github.com/asdkazmi/woiceai-vision.git
+git clone https://github.com/asdkazmi/woiceai.git
+cd woiceai
+git switch integrate/web
 ```
 
-For a release, check out the pinned commits in [Sources](../sources/README.md) or a deliberately tested newer release. Build only `chat-with-all-models`, `woice_kb`, and `scrapper` from their respective clones. An optional compatibility build uses `dev-woiceai-chat/woice_chat` in another clone.
+Use each service folder as its build context. See [Sources](../sources/README.md) for the directory map.
 
 ## 2. Provision shared storage and credentials
 
